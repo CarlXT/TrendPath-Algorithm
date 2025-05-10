@@ -1,0 +1,96 @@
+Algorithm: Trend-Path
+
+Input: - DemandData: Time-series demand data for each product - StockUnits: Current number of units of the product in inventory - ProductGraph: A network of products and supply paths
+
+Output: - Boolean prediction: True if the product is likely to deplete soon. - AdjustedForecasts: Updated demand forecasts per product - OptimizedPaths: Best supply paths, adjusted for spikes
+
+Steps:
+
+1. Initialize Parameters for Each Product:
+
+   Set InitialWindow = 3 hours (default short-term window for demand analysis).
+
+   Set PreviousWindow = 5 hours before InitialWindow (previous demand history for comparison).
+
+   Set LongTermWindow = 48 hours (longer-term window for volatility calculation).
+
+2. Calculate Demand Statistics:
+
+   ShortTermAvg = average demand over InitialWindow (most recent demand).
+
+   PrevAvg = average demand over PreviousWindow (historical comparison).
+
+   σ = standard deviation of demand over the combined InitialWindow + PreviousWindow.
+
+   LongTermσ = standard deviation of demand over the LongTermWindow (used for volatility assessment).
+
+3. Detect virality signal (dynamic threshold):
+
+   - Compute DynamicViralThreshold:
+   - DynamicViralThreshold = BaseViral + (VolatilityAdjustment × (σ / LongTermσ))
+   - If (ShortTermAvg / PrevAvg) > DynamicViralThreshold:
+     - Escalate detection:
+
+- Set InitialWindow = 1 hour
+  - Set PreviousWindow = 2 hours before InitialWindow
+  - Recalculate ShortTermAvg, PrevAvg,
+
+4.  Dynamically Calculate Thresholds:
+
+    BaseSensitivityFactor = MinBase + (MaxBase - MinBase) \* (σ / Maxσ)
+
+        MinBase and MaxBase are dynamic based on volatility and recent demand behavior. These values adjust the sensitivity to changes in demand.
+
+    VolatilityFactor = MinVolatility + (MaxVolatility - MinVolatility) \* (σ / Maxσ)
+
+        Adjusts sensitivity based on how volatile the demand has been over the last period.
+
+    k = BaseSensitivityFactor + (VolatilityFactor × σ)
+
+        Combines sensitivity and volatility to account for sharp demand movements.
+
+    DynamicThreshold = PrevAvg + (k × σ)
+
+        This is the dynamically calculated threshold for spike detection, considering volatility and previous demand behavior.
+
+5.  Spike Detection:
+
+    If ShortTermAvg > DynamicThreshold:
+
+        Mark product as spike node:
+
+            This indicates a significant spike in demand for the product.
+
+6.  Bellman-Ford Pathfinding:
+
+    Adjust path costs based on spike detection:
+
+        If a product is marked as a spike node, add a spike penalty to the cost of the supply path.
+
+        Find the shortest-cost paths for each product from the source (e.g., warehouse or supplier).
+
+        This helps determine the most cost-effective or efficient supply path for restocking.
+
+7.  Forecast Adjustment:
+
+    For each product:
+
+        Trace the path from the source to determine how many spike nodes are in the path.
+
+        Increase forecast based on exposure to spike nodes (e.g., if a product passes through more spike-prone suppliers, increase the forecast for demand restocking).
+
+8.  Estimate Depletion:
+
+    For each product:
+
+        Forecast N days to depletion based on the adjusted average and current stock levels.
+
+        This uses the adjusted forecast to predict how soon the product will run out of stock based on the new demand patterns.
+
+9.  Return:
+
+    Boolean depletion warning: True if the product is likely to deplete soon.
+
+    AdjustedForecasts: Updated forecasts considering spikes and demand fluctuations.
+
+    OptimizedPaths: Best supply paths adjusted for detected spikes.

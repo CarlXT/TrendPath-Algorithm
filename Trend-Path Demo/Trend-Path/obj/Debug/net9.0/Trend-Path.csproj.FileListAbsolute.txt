@@ -1,0 +1,14 @@
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\bin\Debug\net9.0\Trend-Path.exe
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\bin\Debug\net9.0\Trend-Path.deps.json
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\bin\Debug\net9.0\Trend-Path.runtimeconfig.json
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\bin\Debug\net9.0\Trend-Path.dll
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\bin\Debug\net9.0\Trend-Path.pdb
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.AssemblyInfoInputs.cache
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.AssemblyInfo.cs
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.csproj.CoreCompileInputs.cache
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.dll
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\refint\Trend-Path.dll
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.pdb
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\Trend-Path.genruntimeconfig.cache
+C:\Users\Car Gabriel\Downloads\Trend-Path Demo\Trend-Path\obj\Debug\net9.0\ref\Trend-Path.dll
