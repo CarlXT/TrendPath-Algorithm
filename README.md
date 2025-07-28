@@ -1,1 +1,1 @@
-# TrendPath-Demo
+# TrendPath
